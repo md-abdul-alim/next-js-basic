@@ -1,7 +1,12 @@
 import Button from '@/app/components/Button';
-import React, { lazy } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import alim from "@/public/md-abdul-alim.jpg";
+
+export const metadata = {
+  title: "Mission",
+  description: "This a blog mission page",
+};
 
 export default function Mission() {
   return (

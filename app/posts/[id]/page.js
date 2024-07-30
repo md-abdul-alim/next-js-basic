@@ -2,6 +2,7 @@ import getPost from '@/lib/getPost';
 import getPostComment from '@/lib/getPostComment';
 import Comments from '@/app/components/Comments';
 import React, { Suspense } from 'react';
+import getAllPosts from '@/lib/getAllPosts';
 
 export async function generateMetadata({ params }){
   // de duplication api request. if once request a api next js.
@@ -43,4 +44,16 @@ export default async function PostPage({ params }) {
 
     </div>
   )
+}
+
+export async function generateStaticParams(){
+  // apply SSG: static site generation.
+  // make dynamic data to static data.
+  // use this if content rearly change.
+  // if change run 'npm run build'. next js will update the data again.
+  const posts = await getAllPosts();
+
+  return posts.map((post) => ({
+    id: post.id.toString(),
+  }))
 }
